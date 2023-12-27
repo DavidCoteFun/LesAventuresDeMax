@@ -8,7 +8,7 @@ Created on Sat Dec 21 19:15:15 2019
 
 import pygame
 from pygame import Color
-from Parametres import MAX_X,MAX_Y
+from Parametres import MAX_X,MAX_Y,baseDir
 from personnages import ChoseQuiBouge,Carre
 import time
 
@@ -72,13 +72,13 @@ class MarioMap:
 
 class Gazon(ChoseQuiBouge):
     def __init__(self,posX,posY):
-       image=pygame.image.load("/Users/dcote/Tristan/Mario/images/herbemario_petit.png").convert()
+       image=pygame.image.load(baseDir+"images/herbemario_petit.png").convert()
        ChoseQuiBouge.__init__(self,[posX,posY],image)
        return
 
 class Poutre(ChoseQuiBouge):
     def __init__(self,posX,posY):
-       image=pygame.image.load("/Users/dcote/Tristan/Mario/images/bloc_pour_poutre_petit.png").convert()
+       image=pygame.image.load(baseDir+"images/bloc_pour_poutre_petit.png").convert()
        ChoseQuiBouge.__init__(self,[posX,posY],image)
        return
 
@@ -96,11 +96,11 @@ class Texte(ChoseQuiBouge):
 
 
 hPout=Poutre(0,0).rect.h
-hPlat=ImageGenerique(0,0,"/Users/dcote/Tristan/Mario/images/plateforme_petit.png").rect.h
+hPlat=ImageGenerique(0,0,baseDir+"images/plateforme_petit.png").rect.h
 hGazon=Gazon(0,0).rect.h
 wGazon=Gazon(0,0).rect.w
-hPierre=ImageGenerique(0,0,"/Users/dcote/Tristan/Mario/images/Pierre.gif").rect.h
-wPierre=ImageGenerique(0,0,"/Users/dcote/Tristan/Mario/images/Pierre.gif").rect.w
+hPierre=ImageGenerique(0,0,baseDir+"images/Pierre.gif").rect.h
+wPierre=ImageGenerique(0,0,baseDir+"images/Pierre.gif").rect.w
 
 
 # INTRO screen
@@ -115,7 +115,7 @@ tt2=Texte("Fleche UP pour commencer",Color('yellow'),0,0)
 tt2.rect.center=(MAX_X/2.0,MAX_Y/2.5)
 intro.ajoute_background(tt2)
 intro.ajoute_obstacle(Gazon((MAX_X-wGazon)*0.5,MAX_Y-hGazon))
-intro.ajoute_background(ImageGenerique(100,100,"/Users/dcote/Tristan/Mario/images/RelaxMax.gif"))
+intro.ajoute_background(ImageGenerique(100,100,baseDir+"images/RelaxMax.gif"))
 
 
 # MAP 1
@@ -150,38 +150,38 @@ def get_map1():
     
     map1.ajoute_obstacle(Carre('transparent',200,220,50,50))
     
-    #map1.ajoute_obstacle(ImageGenerique(200,-300,"/Users/dcote/Tristan/Mario/images/tuyau_petit.gif"))
-    tuy=ImageGenerique(450,-300,"/Users/dcote/Tristan/Mario/images/tuyau_petit.gif")
+    #map1.ajoute_obstacle(ImageGenerique(200,-300,baseDir+"images/tuyau_petit.gif"))
+    tuy=ImageGenerique(450,-300,baseDir+"images/tuyau_petit.gif")
     porte1=Carre('transparent',tuy.rect.x,tuy.rect.y-80,tuy.rect.w,80)
     porte1.prochain_tableau='shortcut1'
     map1.portes.append(porte1)
     map1.ajoute_background(porte1)
     
     map1.ajoute_obstacle(tuy)
-    bri=ImageGenerique(450,tuy.rect.y+tuy.rect.h,"/Users/dcote/Tristan/Mario/images/brique_petit.gif")
+    bri=ImageGenerique(450,tuy.rect.y+tuy.rect.h,baseDir+"images/brique_petit.gif")
     map1.ajoute_obstacle(bri)
-    map1.ajoute_obstacle(ImageGenerique(bri.rect.x-2*bri.rect.w,tuy.rect.y+tuy.rect.h,"/Users/dcote/Tristan/Mario/images/brique_petit.gif"))
-    map1.ajoute_obstacle(ImageGenerique(bri.rect.x-bri.rect.w,tuy.rect.y+tuy.rect.h,"/Users/dcote/Tristan/Mario/images/brique_petit.gif"))
-    map1.ajoute_obstacle(ImageGenerique(bri.rect.x+bri.rect.w,tuy.rect.y+tuy.rect.h,"/Users/dcote/Tristan/Mario/images/brique_petit.gif"))
-    map1.ajoute_obstacle(ImageGenerique(bri.rect.x+2*bri.rect.w,tuy.rect.y+tuy.rect.h,"/Users/dcote/Tristan/Mario/images/brique_petit.gif"))
-    map1.ajoute_obstacle(ImageGenerique(bri.rect.x+3*bri.rect.w,tuy.rect.y+tuy.rect.h,"/Users/dcote/Tristan/Mario/images/brique_petit.gif"))
+    map1.ajoute_obstacle(ImageGenerique(bri.rect.x-2*bri.rect.w,tuy.rect.y+tuy.rect.h,baseDir+"images/brique_petit.gif"))
+    map1.ajoute_obstacle(ImageGenerique(bri.rect.x-bri.rect.w,tuy.rect.y+tuy.rect.h,baseDir+"images/brique_petit.gif"))
+    map1.ajoute_obstacle(ImageGenerique(bri.rect.x+bri.rect.w,tuy.rect.y+tuy.rect.h,baseDir+"images/brique_petit.gif"))
+    map1.ajoute_obstacle(ImageGenerique(bri.rect.x+2*bri.rect.w,tuy.rect.y+tuy.rect.h,baseDir+"images/brique_petit.gif"))
+    map1.ajoute_obstacle(ImageGenerique(bri.rect.x+3*bri.rect.w,tuy.rect.y+tuy.rect.h,baseDir+"images/brique_petit.gif"))
     
-    p7=ImageGenerique(100,b6.rect.top-hPlat,"/Users/dcote/Tristan/Mario/images/plateforme_petit.png")
+    p7=ImageGenerique(100,b6.rect.top-hPlat,baseDir+"images/plateforme_petit.png")
     map1.ajoute_obstacle(p7)
     
     g2=Gazon(g1.rect.right,g1.rect.top)
     map1.ajoute_obstacle(g2)
     
-    p8=ImageGenerique(g2.rect.right,p7.rect.top,"/Users/dcote/Tristan/Mario/images/plateforme_petit.png")
+    p8=ImageGenerique(g2.rect.right,p7.rect.top,baseDir+"images/plateforme_petit.png")
     map1.ajoute_obstacle(p8)
     
-    p9=ImageGenerique(p8.rect.right,p8.rect.top-200,"/Users/dcote/Tristan/Mario/images/plateforme_petit.png")
+    p9=ImageGenerique(p8.rect.right,p8.rect.top-200,baseDir+"images/plateforme_petit.png")
     map1.ajoute_obstacle(p9)
     
     g3=Gazon(p9.rect.right+100,g1.rect.top)
     map1.ajoute_obstacle(g3)
     
-    tmp=ImageGenerique(g3.rect.right-100,b6.rect.top,"/Users/dcote/Tristan/Mario/images/Pierre.gif")
+    tmp=ImageGenerique(g3.rect.right-100,b6.rect.top,baseDir+"images/Pierre.gif")
     map1.ajoute_obstacle(tmp)
     porte2=Carre('yellow',tmp.rect.x,tmp.rect.y-80,tmp.rect.w,80)
     porte2.prochain_tableau='tableau2'
@@ -207,13 +207,13 @@ map2.ajoute_obstacle(Poutre(0,MAX_Y-hGazon-13*hPout))
 map2.ajoute_obstacle(Poutre(300,MAX_Y-hGazon-15*hPout))
 map2.ajoute_obstacle(Poutre(500,MAX_Y-hGazon-17*hPout))
 for i in range(-4,0):
-    map2.ajoute_obstacle(ImageGenerique(300+i*wPierre,MAX_Y-hGazon-20*hPout,"/Users/dcote/Tristan/Mario/images/Pierre.gif"))
+    map2.ajoute_obstacle(ImageGenerique(300+i*wPierre,MAX_Y-hGazon-20*hPout,baseDir+"images/Pierre.gif"))
 for i in range(-8,-4):
-    map2.ajoute_obstacle(ImageGenerique(300+i*wPierre,MAX_Y-hGazon-19*hPout,"/Users/dcote/Tristan/Mario/images/Pierre.gif"))
+    map2.ajoute_obstacle(ImageGenerique(300+i*wPierre,MAX_Y-hGazon-19*hPout,baseDir+"images/Pierre.gif"))
 map2.ajoute_background(Carre('red',300-8*wPierre,MAX_Y-hGazon-20*hPout,4*wPierre,50))
 
 for i in range(0,40):
-    map2.ajoute_obstacle(ImageGenerique(wGazon-wPierre,MAX_Y-hGazon-i*hPierre,"/Users/dcote/Tristan/Mario/images/Pierre.gif"))
+    map2.ajoute_obstacle(ImageGenerique(wGazon-wPierre,MAX_Y-hGazon-i*hPierre,baseDir+"images/Pierre.gif"))
 
 
 map2.ajoute_obstacle(Carre('blue',wGazon+50,MAX_Y-hGazon-3*hPout,50,50))
@@ -234,12 +234,12 @@ outro.portes.append(porte0)
 #shortcut1
 shortcut1=MarioMap("shortcut1")
 for i in range(-10,10):
-    shortcut1.ajoute_obstacle(ImageGenerique(MAX_X/2+i*wPierre,MAX_Y-hPierre,"/Users/dcote/Tristan/Mario/images/Pierre.gif"))
+    shortcut1.ajoute_obstacle(ImageGenerique(MAX_X/2+i*wPierre,MAX_Y-hPierre,baseDir+"images/Pierre.gif"))
 for i in range(12,16):
-    shortcut1.ajoute_obstacle(ImageGenerique(MAX_X/2+i*wPierre,MAX_Y-4*hPierre,"/Users/dcote/Tristan/Mario/images/Pierre.gif"))
+    shortcut1.ajoute_obstacle(ImageGenerique(MAX_X/2+i*wPierre,MAX_Y-4*hPierre,baseDir+"images/Pierre.gif"))
 for i in range(18,22):
-    shortcut1.ajoute_obstacle(ImageGenerique(MAX_X/2+i*wPierre,MAX_Y-8*hPierre,"/Users/dcote/Tristan/Mario/images/Pierre.gif"))    
-tuy=ImageGenerique(MAX_X/2+24*wPierre,MAX_Y-10*hPierre,"/Users/dcote/Tristan/Mario/images/tuyau_petit.gif")
+    shortcut1.ajoute_obstacle(ImageGenerique(MAX_X/2+i*wPierre,MAX_Y-8*hPierre,baseDir+"images/Pierre.gif"))    
+tuy=ImageGenerique(MAX_X/2+24*wPierre,MAX_Y-10*hPierre,baseDir+"images/tuyau_petit.gif")
 porte3=Carre('transparent',tuy.rect.x,tuy.rect.y-80,tuy.rect.w,80)
 porte3.prochain_tableau='tableau1b'
 shortcut1.portes.append(porte3)
@@ -247,8 +247,8 @@ shortcut1.ajoute_background(porte3)
 shortcut1.ajoute_obstacle(tuy)
 
 #Dictionnaire
-dico_tableaux['debut']=map2
-#dico_tableaux['debut']=intro
+#dico_tableaux['debut']=map2
+dico_tableaux['debut']=intro
 dico_tableaux['tableau1']=get_map1
 dico_tableaux['tableau1b']=get_map1b
 dico_tableaux['tableau2']=map2

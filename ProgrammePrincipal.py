@@ -9,7 +9,7 @@ import pygame
 from pygame.locals import *
 import random, math, time
 
-from Parametres import MAX_X,MAX_Y
+from Parametres import MAX_X,MAX_Y,baseDir,exec_loop_speed
 from maps import dico_tableaux,ImageGenerique,MarioMap
 from personnages import Goomba,JoueurPrincipal,Radio
 
@@ -139,8 +139,8 @@ class App:
     def game_over(self):
         print("\nGame Over\n")
         self._running = False
-        goSurf=pygame.image.load("/Users/dcote/Tristan/Mario/images/game_over_petit.gif")
-        goIma=ImageGenerique(0,0,"/Users/dcote/Tristan/Mario/images/game_over_petit.gif")
+        goSurf=pygame.image.load(baseDir+"images/game_over_petit.gif")
+        goIma=ImageGenerique(0,0,baseDir+"images/game_over_petit.gif")
         self._display_surf.blit(goSurf,((MAX_X-goIma.rect.w)/2,(MAX_Y-goIma.rect.h)/2))
         return
 
@@ -186,6 +186,8 @@ class App:
                 self.on_event(event)
             self.on_loop()
             self.on_render()
+            if exec_loop_speed > 0:
+                time.sleep(1/exec_loop_speed)
 
         self.on_cleanup(self.newLevel)
         return

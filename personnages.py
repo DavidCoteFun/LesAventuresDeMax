@@ -9,7 +9,7 @@ import pygame
 from pygame.locals import *
 
 import time
-from Parametres import MAX_X,MAX_Y
+from Parametres import MAX_X,MAX_Y,baseDir
 
 class ChoseQuiBouge(pygame.sprite.Sprite):
     def __init__(self,position,image1,image2=None):
@@ -172,10 +172,10 @@ class Carre(ChoseQuiBouge):
 
 class Goomba(ChoseQuiBouge):
     def __init__(self,posX,posY):
-       image1=pygame.image.load("/Users/dcote/Tristan/Mario/images/gomba_gauche.gif").convert()
+       image1=pygame.image.load(baseDir+"images/gomba_gauche.gif").convert()
        ChoseQuiBouge.__init__(self,[posX,posY],image1)
-       self.images.append("/Users/dcote/Tristan/Mario/images/gomba_gauche.gif")
-       self.images.append("/Users/dcote/Tristan/Mario/images/gomba_droite.gif")
+       self.images.append(baseDir+"images/gomba_gauche.gif")
+       self.images.append(baseDir+"images/gomba_droite.gif")
        self.t1=0
        return
 
@@ -200,10 +200,10 @@ class Goomba(ChoseQuiBouge):
 
 class Radio(ChoseQuiBouge):
     def __init__(self,posX,posY):
-       image1=pygame.image.load("/Users/dcote/Tristan/Mario/images/radioenrage1.gif").convert()
+       image1=pygame.image.load(baseDir+"images/radioenrage1.gif").convert()
        ChoseQuiBouge.__init__(self,[posX,posY],image1)
-       self.images.append("/Users/dcote/Tristan/Mario/images/radioenrage1.gif")
-       self.images.append("/Users/dcote/Tristan/Mario/images/radioenrage2.gif")
+       self.images.append(baseDir+"images/radioenrage1.gif")
+       self.images.append(baseDir+"images/radioenrage2.gif")
        self.t1=0
        return
 
@@ -229,18 +229,18 @@ class Radio(ChoseQuiBouge):
 
 class JoueurPrincipal(ChoseQuiBouge):
     def __init__(self,posX,posY):
-       #image=pygame.image.load("/Users/dcote/Tristan/Mario/images/alien1.gif")
-       image=pygame.image.load("/Users/dcote/Tristan/Mario/images/max1_petit.gif").convert()
+       #image=pygame.image.load(baseDir+"images/alien1.gif")
+       image=pygame.image.load(baseDir+"images/max1_petit.gif").convert()
        ChoseQuiBouge.__init__(self,[posX,posY],image)
        self.projectiles=[]
        self.t_jump=0
        self.t_run=0
        self.images_droite=[]
-       self.images_droite.append("/Users/dcote/Tristan/Mario/images/max1_petit.gif")
-       self.images_droite.append("/Users/dcote/Tristan/Mario/images/max2_petit.gif")
+       self.images_droite.append(baseDir+"images/max1_petit.gif")
+       self.images_droite.append(baseDir+"images/max2_petit.gif")
        self.images_gauche=[]
-       self.images_gauche.append("/Users/dcote/Tristan/Mario/images/max1_petit_gauche.gif")
-       self.images_gauche.append("/Users/dcote/Tristan/Mario/images/max2_petit_gauche.gif")
+       self.images_gauche.append(baseDir+"images/max1_petit_gauche.gif")
+       self.images_gauche.append(baseDir+"images/max2_petit_gauche.gif")
        self.images=self.images_droite
        return
 
